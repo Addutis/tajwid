@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أحكام المد في تجويد القرآن الكريم - دليل شامل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #4caf50;
+            --accent-color: #81c784;
+            --success-color: #43a047;
+            --warning-color: #ffb74d;
+            --danger-color: #e57373;
+            --info-color: #4fc3f7;
+            --light-color: #f1f8e9;
+            --dark-color: #1b5e20;
+            --sidebar-width: 280px;
+            --print-margin: 1.5cm;
+            --quran-green: #1b5e20;
+            --light-green: #e8f5e9;
+            --medium-green: #a5d6a7;
+            --dark-green: #2e7d32;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Amiri', 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            min-height: 100vh;
+            line-height: 1.8;
+            color: #2e3e35;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(46, 125, 50, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 95vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .header::before {
+            content: "﷽";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 3.5em;
+            opacity: 0.15;
+            font-family: 'Amiri', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+            font-family: 'Amiri', serif;
+        }
+        
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            position: relative;
+            min-height: 0;
+        }
+        
+        /* Sidebar amélioré */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+            color: white;
+            padding: 25px 20px;
+            height: calc(100vh - 220px);
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            z-index: 100;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+        }
+        
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.5);
+        }
+        
+        .sidebar-title {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Amiri', serif;
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            padding-right: 0;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .sidebar-nav a {
+            color: rgba(255,255,255,0.95);
+            text-decoration: none;
+            padding: 14px 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.08);
+            border-right: 3px solid transparent;
+            font-size: 1.05em;
+        }
+        
+        .sidebar-nav a:hover {
+            background: rgba(255,255,255,0.18);
+            color: white;
+            transform: translateX(-5px);
+            border-right-color: var(--accent-color);
+        }
+        
+        .sidebar-nav a.active {
+            background: rgba(255,255,255,0.25);
+            color: white;
+            transform: translateX(-5px);
+            border-right-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+        
+        .sidebar-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .sidebar-footer .download-btn {
+            width: 100%;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 14px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+            font-family: inherit;
+            font-size: 1.05em;
+        }
+        
+        .sidebar-footer .download-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            max-height: calc(100vh - 220px);
+            background: #f9fdf8;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            animation: fadeIn 0.6s ease-in;
+            scroll-margin-top: 30px;
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(129, 199, 132, 0.1);
+            break-inside: avoid;
+            border: 1px solid #e8f5e9;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            font-size: 2.2em;
+            color: var(--dark-green);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            break-after: avoid;
+            font-family: 'Amiri', serif;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(129, 199, 132, 0.15);
+            transition: all 0.3s ease;
+            border-right: 5px solid transparent;
+            break-inside: avoid;
+            border: 1px solid #dcedc8;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(129, 199, 132, 0.2);
+            border-right-color: var(--secondary-color);
+        }
+        
+        .card-title {
+            font-size: 1.6em;
+            color: var(--quran-green);
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Amiri', serif;
+        }
+        
+        .card-content {
+            line-height: 1.9;
+            color: #37474f;
+            font-size: 1.05em;
+        }
+        
+        .highlight {
+            background: #fff8e1;
+            padding: 3px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #ff8f00;
+            border-right: 3px solid #ffb74d;
+        }
+        
+        .quran-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.5em;
+            line-height: 2.2;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f9fbe7 0%, #f0f4c3 100%);
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #e6ee9c;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            direction: rtl;
+            letter-spacing: normal;
+            word-spacing: normal;
+        }
+        
+        .quran-example {
+            font-family: 'Amiri', serif;
+            font-size: 1.8em;
+            line-height: 2.5;
+            text-align: center;
+            padding: 25px;
+            background: #f1f8e9;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-right: 5px solid var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.15);
+            direction: rtl;
+            color: #1b5e20;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quran-example::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(129, 199, 132, 0.05)"/></svg>');
+            pointer-events: none;
+        }
+        
+        .tajwid-highlight {
+            background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #f57f17;
+            border-bottom: 2px solid #ffd54f;
+            position: relative;
+            display: inline-block;
+            margin: 0 2px;
+        }
+        
+        .tajwid-highlight::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #ffd54f, #ffca28);
+            border-radius: 1px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: bold;
+            margin: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .badge-primary { background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%); color: white; }
+        .badge-success { background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%); color: white; }
+        .badge-warning { background: linear-gradient(135deg, #ffb74d 0%, #ff9800 100%); color: #5d4037; }
+        .badge-danger { background: linear-gradient(135deg, #ef5350 0%, #e53935 100%); color: white; }
+        .badge-info { background: linear-gradient(135deg, #4fc3f7 0%, #039be5 100%); color: white; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(129, 199, 132, 0.1);
+            break-inside: avoid;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        th {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 20px;
+            text-align: right;
+            font-size: 1.2em;
+            font-weight: bold;
+            font-family: 'Amiri', serif;
+        }
+        
+        td {
+            padding: 18px;
+            border-bottom: 1px solid #e0f2e9;
+            text-align: right;
+            font-size: 1.05em;
+        }
+        
+        tr:hover {
+            background: #f1f8e9;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9fbe7;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-button {
+            padding: 16px 30px;
+            background: white;
+            border: 2px solid var(--secondary-color);
+            border-radius: 30px;
+            color: var(--secondary-color);
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: inherit;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.1);
+        }
+        
+        .tab-button:hover,
+        .tab-button.active {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+            border-color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-right: 5px solid var(--info-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            break-inside: avoid;
+            box-shadow: 0 4px 12px rgba(79, 195, 247, 0.15);
+            font-size: 1.05em;
+        }
+        
+        .list-custom {
+            list-style: none;
+            padding-right: 0;
+        }
+        
+        .list-custom li {
+            padding: 14px;
+            padding-right: 45px;
+            position: relative;
+            margin-bottom: 12px;
+            background: #f9fbe7;
+            border-radius: 10px;
+            transition: all 0.2s;
+            border-right: 3px solid transparent;
+            font-size: 1.05em;
+        }
+        
+        .list-custom li:hover {
+            background: #f0f4c3;
+            transform: translateX(-5px);
+            border-right-color: var(--accent-color);
+        }
+        
+        .list-custom li:before {
+            content: "◆";
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            font-size: 1.3em;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .madd-type-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e8f5e9;
+        }
+        
+        .madd-duration {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--dark-color) 0%, #1b5e20 100%);
+            color: white;
+            padding: 35px;
+            text-align: center;
+            margin-top: auto;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+            transition: all 0.3s;
+            z-index: 1000;
+            border: none;
+            font-family: 'Amiri', serif;
+        }
+        
+        .back-to-top:hover {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.5);
+        }
+        
+        /* Styles pour l'impression A4 */
+        @media print {
+            @page {
+                size: A4;
+                margin: var(--print-margin);
+            }
+            
+            body {
+                background: white !important;
+                font-size: 12pt;
+                line-height: 1.5;
+                font-family: 'Amiri', serif !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            .header {
+                background: #f1f8e9 !important;
+                color: #1b5e20 !important;
+                padding: 20px !important;
+                margin-bottom: 20px;
+                break-after: avoid;
+            }
+            
+            .header h1 {
+                font-size: 24pt !important;
+                color: #1b5e20 !important;
+            }
+            
+            .header p {
+                font-size: 14pt !important;
+                color: #2e7d32 !important;
+            }
+            
+            .header::before {
+                opacity: 0.1;
+            }
+            
+            .sidebar {
+                display: none !important;
+            }
+            
+            .main-wrapper {
+                display: block !important;
+            }
+            
+            .main-content {
+                padding: 0 !important;
+                max-height: none !important;
+                overflow: visible !important;
+                background: white !important;
+            }
+            
+            .section {
+                box-shadow: none !important;
+                border: 2px solid #e8f5e9 !important;
+                margin-bottom: 25px !important;
+                padding: 25px !important;
+                page-break-inside: avoid;
+            }
+            
+            .section-title {
+                font-size: 18pt !important;
+                color: #1b5e20 !important;
+                border-bottom: 2px solid #81c784 !important;
+                page-break-after: avoid;
+            }
+            
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #dcedc8 !important;
+                margin-bottom: 20px !important;
+                padding: 20px !important;
+                page-break-inside: avoid;
+                background: #f9fbe7 !important;
+            }
+            
+            .card-title {
+                font-size: 14pt !important;
+                color: #1b5e20 !important;
+            }
+            
+            .quran-example, .quran-text {
+                border: 1px solid #dcedc8 !important;
+                padding: 15px !important;
+                font-size: 14pt !important;
+                margin: 15px 0 !important;
+                background: #f9fbe7 !important;
+                break-inside: avoid;
+            }
+            
+            .grid {
+                display: block !important;
+            }
+            
+            .badge {
+                border: 1px solid #a5d6a7 !important;
+                color: #1b5e20 !important;
+                background: #e8f5e9 !important;
+                font-size: 10pt !important;
+                padding: 3px 10px !important;
+            }
+            
+            .nav-tabs, .tab-button, .back-to-top, 
+            .sidebar-footer, .download-btn {
+                display: none !important;
+            }
+            
+            .tab-content {
+                display: block !important;
+            }
+            
+            .info-box {
+                border: 1px solid #bbdefb !important;
+                background: #f9fbe7 !important;
+                margin: 20px 0 !important;
+                padding: 20px !important;
+            }
+            
+            .footer {
+                background: #f1f8e9 !important;
+                color: #1b5e20 !important;
+                padding: 20px !important;
+                margin-top: 30px;
+                border-top: 2px solid #81c784;
+                break-before: always;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+            }
+            
+            p, ul, ol, dl {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                max-height: 300px;
+                margin-bottom: 20px;
+            }
+            
+            .main-content {
+                max-height: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .section-title {
+                font-size: 1.7em;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-tabs {
+                justify-content: center;
+            }
+            
+            .tab-button {
+                padding: 12px 20px;
+                font-size: 1em;
+                flex: 1;
+                min-width: 150px;
+                justify-content: center;
+            }
+            
+            .quran-example {
+                font-size: 1.5em;
+                padding: 15px;
+            }
+        }
+        
+        .definition-box {
+            background: linear-gradient(135deg, #f9fbe7 0%, #f0f4c3 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(129, 199, 132, 0.15);
+            break-inside: avoid;
+            border: 1px solid #e6ee9c;
+        }
+        
+        .definition-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-family: 'Amiri', serif;
+        }
+        
+        .letters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .letter-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(129, 199, 132, 0.15);
+            border-top: 6px solid var(--accent-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .letter-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(129, 199, 132, 0.25);
+            border-top-color: var(--secondary-color);
+        }
+        
+        .letter-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(129, 199, 132, 0.05) 0%, rgba(76, 175, 80, 0.02) 100%);
+            pointer-events: none;
+        }
+        
+        .letter-icon {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-family: 'Amiri', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .letter-name {
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-family: 'Amiri', serif;
+        }
+        
+        .letter-condition {
+            color: #546e7a;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .letter-example {
+            font-size: 2em;
+            color: var(--primary-color);
+            direction: rtl;
+            padding: 15px;
+            background: #f1f8e9;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-family: 'Amiri', serif;
+            border: 1px solid #dcedc8;
+        }
+        
+        .section-subtitle {
+            font-size: 1.6em;
+            color: var(--primary-color);
+            margin: 30px 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #c8e6c9;
+            font-family: 'Amiri', serif;
+            font-weight: 600;
+        }
+        
+        .classification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .classification-card {
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-right: 6px solid var(--accent-color);
+            box-shadow: 0 6px 20px rgba(129, 199, 132, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .classification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(129, 199, 132, 0.2);
+            border-right-color: var(--secondary-color);
+        }
+        
+        .classification-title {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Amiri', serif;
+            font-weight: 600;
+        }
+        
+        .madd-detail-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(129, 199, 132, 0.15);
+            border-right: 5px solid var(--accent-color);
+            break-inside: avoid;
+            transition: all 0.3s ease;
+            border: 1px solid #e8f5e9;
+        }
+        
+        .madd-detail-card:hover {
+            box-shadow: 0 10px 30px rgba(129, 199, 132, 0.2);
+            border-right-color: var(--secondary-color);
+        }
+        
+        .madd-number {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-left: 15px;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
+        
+        .madd-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f1f8e9;
+        }
+        
+        .madd-name {
+            font-size: 1.6em;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-family: 'Amiri', serif;
+            flex: 1;
+        }
+        
+        .subtype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .subtype-card {
+            background: #f9fbe7;
+            padding: 25px;
+            border-radius: 12px;
+            border-right: 4px solid var(--info-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .subtype-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(129, 199, 132, 0.2);
+            background: #f0f4c3;
+        }
+        
+        .subtype-name {
+            font-size: 1.3em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-family: 'Amiri', serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .arabic-text {
+            font-size: 1.15em;
+            line-height: 2;
+            text-align: right;
+            margin-bottom: 20px;
+            font-family: 'Cairo', sans-serif;
+            color: #37474f;
+        }
+        
+        .arabic-highlight {
+            background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: #f57f17;
+            border-right: 3px solid #ffd54f;
+            position: relative;
+            display: inline-block;
+            margin: 0 3px;
+        }
+        
+        .arabic-note {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-right: 5px solid var(--info-color);
+            margin: 20px 0;
+            font-style: italic;
+            box-shadow: 0 4px 12px rgba(79, 195, 247, 0.15);
+            font-size: 1.05em;
+        }
+        
+        .arabic-list {
+            list-style-type: arabic-indic;
+            padding-right: 35px;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+        
+        .arabic-list li {
+            margin-bottom: 12px;
+            padding-right: 15px;
+            line-height: 1.8;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(129, 199, 132, 0.15);
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 18px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            font-family: 'Amiri', serif;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border: 1px solid #e0f2e9;
+            text-align: center;
+            font-size: 1.05em;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f9fbe7;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f1f8e9;
+        }
+        
+        .tajwid-rule {
+            background: linear-gradient(135deg, #fffde7 0%, #fff9c4 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-right: 5px solid #ffd54f;
+            box-shadow: 0 4px 12px rgba(255, 213, 79, 0.2);
+        }
+        
+        .tajwid-rule-title {
+            color: #ff8f00;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Amiri', serif;
+        }
+        
+        /* Style pour les signes diacritiques */
+        .diacritic {
+            font-family: 'Amiri', serif;
+            font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+            text-rendering: optimizeLegibility;
+        }
+        
+        .verse-number {
+            background: var(--secondary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            vertical-align: super;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 أحكام المد في تجويد القرآن الكريم</h1>
+            <p>دليل شامل للقواعد التسعة للمد - مع أمثلة قرآنية وجدول مقارنة تفاعلي</p>
+        </div>
+        
+        <div class="main-wrapper">
+            <!-- Sidebar amélioré -->
+            <div class="sidebar">
+                <h3 class="sidebar-title"><i class="fas fa-bookmark"></i> فهرس المحتويات</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#definition" onclick="scrollToSection('definition')">
+                        <i class="fas fa-book"></i> تعريف المد
+                    </a></li>
+                    <li><a href="#letters" onclick="scrollToSection('letters')">
+                        <i class="fas fa-font"></i> حروف المد
+                    </a></li>
+                    <li><a href="#classification" onclick="scrollToSection('classification')">
+                        <i class="fas fa-sitemap"></i> تصنيف المدود
+                    </a></li>
+                    <li><a href="#asli-madd" onclick="scrollToSection('asli-madd')">
+                        <i class="fas fa-seedling"></i> المد الأصلي
+                    </a></li>
+                    <li><a href="#farai-madd" onclick="scrollToSection('farai-madd')">
+                        <i class="fas fa-branch"></i> المد الفرعي
+                    </a></li>
+                    <li><a href="#madd-types" onclick="scrollToSection('madd-types')">
+                        <i class="fas fa-list-ol"></i> الأنواع التسعة
+                    </a></li>
+                    <li><a href="#summary-table" onclick="scrollToSection('summary-table')">
+                        <i class="fas fa-table"></i> جدول الملخص
+                    </a></li>
+                </ul>
+                
+                <div class="sidebar-footer">
+                    <button class="download-btn" onclick="window.print()">
+                        <i class="fas fa-print"></i> طباعة الدليل
+                    </button>
+                    <div style="margin-top: 15px; font-size: 0.9em; color: rgba(255,255,255,0.8); text-align: center;">
+                        <p>الدليل معد للطباعة على ورق A4</p>
+                        <p style="margin-top: 5px; font-size: 0.85em;">نص مدعوم بالتشكيل الكامل</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contenu principal amélioré -->
+            <div class="main-content">
+                <!-- تعريف المد -->
+                <div id="definition" class="section">
+                    <h2 class="section-title"><i class="fas fa-book-open"></i> تعريف المد</h2>
+                    
+                    <div class="definition-box">
+                        <div class="arabic-text diacritic">
+                            <p><span class="arabic-highlight">المدُّ في اللُّغةِ:</span> الزِّيادَةُ.</p>
+                            <p><span class="arabic-highlight">واصْطِلاحًا:</span> إطَالَةُ الصَّوْتِ بِحَرْفٍ مِنْ حُرُوفِ المَدِّ.</p>
+                        </div>
+                        
+                        <div class="info-box">
+                            <strong>شرح التعريف:</strong> المد هو إشباع حركة حرف المد وإطالة نطقه بمقدار محدد من الحركات (الحركة هي المدة الزمنية اللازمة لفتح الإصبع أو قبضه مرة واحدة).
+                        </div>
+                        
+                        <div class="tajwid-rule">
+                            <div class="tajwid-rule-title"><i class="fas fa-star"></i> قاعدة تجويدية هامة</div>
+                            <p class="arabic-text">حروف المد ثلاثة: <span class="tajwid-highlight">الألف</span>، <span class="tajwid-highlight">الواو</span>، <span class="tajwid-highlight">الياء</span>. وتكون ساكنة، وتأتي بعدها حركة تناسبها.</p>
+                        </div>
+                        
+                        <div class="arabic-text diacritic" style="margin-top: 20px;">
+                            <p><strong>أنواع المد:</strong> المدود تسعة أنواع وهي تنقسم إلى قسمين:</p>
+                            <ol class="arabic-list">
+                                <li><strong>المد الأصلي:</strong> وهو الذي لا تقوم ذات الحرف إلا به، ولا يتوقف على سبب من همز أو سكون، ولا يمد إلا بمقدار حركتين.</li>
+                                <li><strong>المد الفرعي:</strong> هو ما كان بسبب من اجتماع حرف المد بهمز أو سكون.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">الفرق بين المد الأصلي والفرعي</div>
+                        <div class="card-content">
+                            <div class="classification-grid">
+                                <div class="classification-card">
+                                    <div class="classification-title"><i class="fas fa-seedling"></i> المد الأصلي</div>
+                                    <ul class="list-custom">
+                                        <li>أصلي في الحرف (ذاتي)</li>
+                                        <li>مقداره: <span class="badge badge-success">حركتان</span> فقط</li>
+                                        <li>لا يحتاج سبباً خارجياً</li>
+                                        <li>يشمل: الطبيعي، البدل، العوض، الصلة الصغرى</li>
+                                    </ul>
+                                </div>
+                                <div class="classification-card">
+                                    <div class="classification-title"><i class="fas fa-branch"></i> المد الفرعي</div>
+                                    <ul class="list-custom">
+                                        <li>عارض للحرف (غير ذاتي)</li>
+                                        <li>مقداره: يزيد عن حركتين <span class="badge badge-warning">(2-6 حركات)</span></li>
+                                        <li>يحتاج سبباً (همز أو سكون)</li>
+                                        <li>يشمل: الواجب المتصل، الجائز المنفصل، اللازم، العارض للسكون، اللين، الصلة الكبرى</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- حروف المد -->
+                <div id="letters" class="section">
+                    <h2 class="section-title"><i class="fas fa-font"></i> حروف المد الثلاثة</h2>
+                    
+                    <div class="arabic-text diacritic">
+                        <p>حروف المد ثلاثة، وتسمى أيضاً <span class="arabic-highlight">حروف العلة</span> لأنها تميل وتتغير حسب ما قبلها:</p>
+                    </div>
+                    
+                    <div class="quran-text diacritic">
+                        ﴿نُوحِيهَا﴾ - في هذه الكلمة تتجلى حروف المد الثلاثة: الواو الساكنة المضموم ما قبلها، والياء الساكنة المكسور ما قبلها، والألف الساكنة المفتوح ما قبلها.
+                    </div>
+                    
+                    <div class="letters-grid">
+                        <div class="letter-card">
+                            <div class="letter-icon diacritic">ا</div>
+                            <div class="letter-name diacritic">الألف</div>
+                            <div class="letter-condition">الساكنة المفتوح ما قبلها</div>
+                            <div class="letter-example diacritic">ـَا</div>
+                            <div style="margin-top: 15px;">
+                                <p><strong>شرطها:</strong> أن تكون ساكنة وما قبلها مفتوح</p>
+                                <div class="quran-example diacritic">﴿قَالَ﴾ - ﴿رَحْمَانَ﴾ - ﴿آمَنَ﴾</div>
+                            </div>
+                        </div>
+                        
+                        <div class="letter-card">
+                            <div class="letter-icon diacritic">و</div>
+                            <div class="letter-name diacritic">الواو</div>
+                            <div class="letter-condition">الساكنة المضموم ما قبلها</div>
+                            <div class="letter-example diacritic">ـُو</div>
+                            <div style="margin-top: 15px;">
+                                <p><strong>شرطها:</strong> أن تكون ساكنة وما قبلها مضموم</p>
+                                <div class="quran-example diacritic">﴿يَقُولُ﴾ - ﴿نُوحِيهَا﴾ - ﴿يَعْلَمُونَ﴾</div>
+                            </div>
+                        </div>
+                        
+                        <div class="letter-card">
+                            <div class="letter-icon diacritic">ي</div>
+                            <div class="letter-name diacritic">الياء</div>
+                            <div class="letter-condition">الساكنة المكسور ما قبلها</div>
+                            <div class="letter-example diacritic">ـِي</div>
+                            <div style="margin-top: 15px;">
+                                <p><strong>شرطها:</strong> أن تكون ساكنة وما قبلها مكسور</p>
+                                <div class="quran-example diacritic">﴿قِيلَ﴾ - ﴿بِهِ﴾ - ﴿نُوحِيهَا﴾</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="arabic-note">
+                        <strong>كلمة جامعة للحروف الثلاثة:</strong> ﴿نُجِيحًا﴾ (فيها الواو الساكنة المضموم ما قبلها، والياء الساكنة المكسور ما قبلها، والألف الساكنة المفتوح ما قبلها)
+                    </div>
+                </div>
+
+                <!-- تصنيف المدود -->
+                <div id="classification" class="section">
+                    <h2 class="section-title"><i class="fas fa-sitemap"></i> تصنيف المدود</h2>
+                    
+                    <div class="arabic-text diacritic">
+                        <p>تنقسم المدود إلى قسمين رئيسيين حسب السبب:</p>
+                    </div>
+                    
+                    <div class="classification-grid">
+                        <div class="classification-card">
+                            <div class="classification-title"><i class="fas fa-bolt"></i> المد بسبب الهمز</div>
+                            <ul class="list-custom">
+                                <li><strong>الواجب المتصل:</strong> همز بعد حرف المد في كلمة واحدة</li>
+                                <li><strong>الجائز المنفصل:</strong> همز بعد حرف المد في كلمتين</li>
+                                <li><strong>الصلة الكبرى:</strong> همز بعد هاء الضمير</li>
+                            </ul>
+                            <div class="quran-example diacritic" style="margin-top: 15px; padding: 15px; font-size: 1.5em;">
+                                ﴿جَاءَ﴾ - ﴿إِلَى اللَّهِ﴾ - ﴿مَالَهُ أَخْلَدَهُ﴾
+                            </div>
+                        </div>
+                        
+                        <div class="classification-card">
+                            <div class="classification-title"><i class="fas fa-pause"></i> المد بسبب السكون</div>
+                            <ul class="list-custom">
+                                <li><strong>اللازم:</strong> سكون أصلي بعد حرف المد</li>
+                                <li><strong>العارض للسكون:</strong> سكون عارض للوقف بعد حرف المد أو اللين</li>
+                                <li><strong>اللين:</strong> واو أو ياء ساكنتين وقبلهما مفتوح</li>
+                            </ul>
+                            <div class="quran-example diacritic" style="margin-top: 15px; padding: 15px; font-size: 1.5em;">
+                                ﴿الْحَاقَّةُ﴾ - ﴿الرَّحِيمِ﴾ - ﴿خَوْفٌ﴾
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="arabic-note">
+                        <strong>ملاحظة:</strong> السكون إما أن يكون:
+                        <ol class="arabic-list" style="margin-top: 10px;">
+                            <li><strong>لازماً:</strong> لا يتغير وصلاً ولا وقفاً (يندرج تحته المد اللازم بأقسامه)</li>
+                            <li><strong>عارضاً:</strong> أي في الوقف فقط (يندرج تحته المد العارض للسكون واللين)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- المد الأصلي -->
+                <div id="asli-madd" class="section">
+                    <h2 class="section-title"><i class="fas fa-seedling"></i> المد الأصلي (الطبيعي)</h2>
+                    
+                    <div class="arabic-text diacritic">
+                        <p>المد الأصلي هو الذي لا تقوم ذات الحرف إلا به، ولا يتوقف على سبب من همز أو سكون، ويمد بمقدار حركتين فقط.</p>
+                    </div>
+                    
+                    <div class="tajwid-rule">
+                        <div class="tajwid-rule-title"><i class="fas fa-ruler"></i> مدة الحركة</div>
+                        <p>الحركة هي المدة الزمنية اللازمة لفتح الإصبع أو قبضه مرة واحدة. المد الطبيعي يمتد بمقدار <span class="badge badge-success">حركتين</span>، أي وقت فتح الإصبع وقبضه مرتين.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-title">أقسام المد الأصلي</div>
+                        <div class="card-content">
+                            <div class="subtype-grid">
+                                <div class="subtype-card">
+                                    <div class="subtype-name"><i class="fas fa-leaf"></i> 1. المد الطبيعي</div>
+                                    <p><strong>التعريف:</strong> ما لم يأت قبله همز، أو بعده همز أو سكون.</p>
+                                    <p><strong>المقدار:</strong> <span class="badge badge-success">حركتان</span></p>
+                                    <div class="quran-example diacritic">مثال: ﴿قَالَ﴾، ﴿يَقُولُ﴾، ﴿قِيلَ﴾</div>
+                                </div>
+                                
+                                <div class="subtype-card">
+                                    <div class="subtype-name"><i class="fas fa-exchange-alt"></i> 2. مد البدل</div>
+                                    <p><strong>التعريف:</strong> أن يأتي قبل حرف المد همزة.</p>
+                                    <p><strong>المقدار:</strong> <span class="badge badge-success">حركتان</span> وصلاً ووقفاً</p>
+                                    <div class="quran-example diacritic">مثال: ﴿آدَمَ﴾، ﴿أُوتُوا﴾، ﴿إِيمَانًا﴾</div>
+                                    <div class="arabic-note" style="margin-top: 10px; padding: 12px; font-size: 0.95em;">
+                                        <strong>سبب التسمية:</strong> لأنه في الأصل عبارة عن همزتين: الأولى متحركة والثانية ساكنة، فأبدلت الثانية مداً.
+                                    </div>
+                                </div>
+                                
+                                <div class="subtype-card">
+                                    <div class="subtype-name"><i class="fas fa-gift"></i> 3. مد العوض</div>
+                                    <p><strong>التعريف:</strong> مد في حالة الوقف على تنوين النصب فقط.</p>
+                                    <p><strong>المقدار:</strong> <span class="badge badge-success">حركتان</span> فقط في الوقف</p>
+                                    <div class="quran-example diacritic">مثال: ﴿عَفُوًّا﴾، ﴿رَحِيمًا﴾، ﴿شَكُورًا﴾</div>
+                                    <div class="arabic-note" style="margin-top: 10px; padding: 12px; font-size: 0.95em;">
+                                        <strong>سبب التسمية:</strong> لأننا عوضنا التنوين بالألف.
+                                    </div>
+                                </div>
+                                
+                                <div class="subtype-card">
+                                    <div class="subtype-name"><i class="fas fa-link"></i> 4. مد الصلة الصغرى</div>
+                                    <p><strong>التعريف:</strong> مد خاص بهاء الضمير للمفرد المذكر الغائب إذا لم يأت بعد الهاء همز.</p>
+                                    <p><strong>المقدار:</strong> <span class="badge badge-success">حركتان</span></p>
+                                    <div class="quran-example diacritic">مثال: ﴿لَهُ مَا﴾، ﴿بِهِ فَهُوَ﴾، ﴿إِلَيْهِ﴾</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المد الفرعي -->
+                <div id="farai-madd" class="section">
+                    <h2 class="section-title"><i class="fas fa-branch"></i> المد الفرعي</h2>
+                    
+                    <div class="arabic-text diacritic">
+                        <p>المد الفرعي هو ما كان بسبب من اجتماع حرف المد بهمز أو سكون، ويمد بمقدار يزيد عن حركتين (من 2 إلى 6 حركات حسب النوع).</p>
+                    </div>
+                    
+                    <div class="nav-tabs">
+                        <button class="tab-button active" onclick="showTab('due-to-hamz')">
+                            <i class="fas fa-bolt"></i> المد بسبب الهمز
+                        </button>
+                        <button class="tab-button" onclick="showTab('due-to-sukun')">
+                            <i class="fas fa-pause"></i> المد بسبب السكون
+                        </button>
+                    </div>
+                    
+                    <div id="due-to-hamz" class="tab-content active">
+                        <div class="card">
+                            <div class="card-title">المد بسبب الهمز</div>
+                            <div class="card-content">
+                                <div class="tajwid-rule">
+                                    <div class="tajwid-rule-title"><i class="fas fa-exclamation-circle"></i> قاعدة الهمز</div>
+                                    <p>الهمز يسبب زيادة في المد لأن طبيعته الشدة تحتاج إلى تأنٍّ في النطق، مما يؤدي إلى إطالة الحرف السابق له.</p>
+                                </div>
+                                
+                                <div class="subtype-grid">
+                                    <div class="subtype-card">
+                                        <div class="subtype-name"><i class="fas fa-link"></i> 5. المد الواجب المتصل</div>
+                                        <p><strong>التعريف:</strong> أن يأتي بعد حرف المد همز متصل به في كلمة واحدة.</p>
+                                        <p><strong>المقدار:</strong> <span class="badge badge-danger">4 حركات</span> (أو 5 حركات في الوصل)</p>
+                                        <div class="quran-example diacritic">مثال: ﴿السَّمَاءُ﴾، ﴿جَاءَكُمْ﴾، ﴿سَوَاءٌ﴾</div>
+                                        <div class="arabic-note" style="margin-top: 10px; padding: 12px; font-size: 0.95em;">
+                                            <strong>في الوقف:</strong> يجوز مده ست حركات لأنه يصبح من باب العارض للسكون.
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="subtype-card">
+                                        <div class="subtype-name"><i class="fas fa-unlink"></i> 6. المد الجائز المنفصل</div>
+                                        <p><strong>التعريف:</strong> أن يكون حرف المد آخر كلمة والهمز أول كلمة أخرى تليها.</p>
+                                        <p><strong>المقدار:</strong> <span class="badge badge-warning">4 حركات</span> (يجوز 2 أو 5 حركات)</p>
+                                        <div class="quran-example diacritic">مثال: ﴿وَتُوبُوا إِلَى اللَّهِ﴾، ﴿بِمَا أُوحِيَ﴾، ﴿فِي أَنْفُسِكُمْ﴾</div>
+                                    </div>
+                                    
+                                    <div class="subtype-card">
+                                        <div class="subtype-name"><i class="fas fa-user"></i> 7. الصلة الكبرى</div>
+                                        <p><strong>التعريف:</strong> أن يأتي بعد هاء الضمير همز قطع.</p>
+                                        <p><strong>المقدار:</strong> <span class="badge badge-info">4 حركات</span></p>
+                                        <div class="quran-example diacritic">مثال: ﴿مَالَهُ أَخْلَدَهُ﴾، ﴿فِي حُكْمِهِ أَحَدًا﴾، ﴿إِلَيْهِ أَمْرُهُ﴾</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="due-to-sukun" class="tab-content">
+                        <div class="card">
+                            <div class="card-title">المد بسبب السكون</div>
+                            <div class="card-content">
+                                <div class="tajwid-rule">
+                                    <div class="tajwid-rule-title"><i class="fas fa-volume-mute"></i> قاعدة السكون</div>
+                                    <p>السكون يسبب إطالة الصوت لأنه وقف مؤقت على الحرف، مما يحتاج إلى إطالة الحرف السابق للتنفس والاستعداد للحرف التالي.</p>
+                                </div>
+                                
+                                <div class="subtype-grid">
+                                    <div class="subtype-card">
+                                        <div class="subtype-name"><i class="fas fa-lock"></i> 8. المد اللازم</div>
+                                        <p><strong>التعريف:</strong> ما جاء فيه بعد حرف المد سكون لازم في حالتي الوصل والوقف.</p>
+                                        <p><strong>المقدار:</strong> <span class="badge badge-primary">6 حركات</span> لزوماً</p>
+                                        <div class="quran-example diacritic">مثال: ﴿الصَّاخَّةُ﴾، ﴿الطَّامَّةُ﴾، ﴿الْحَاقَّةُ﴾</div>
+                                        
+                                        <h4 class="section-subtitle">أقسام المد اللازم:</h4>
+                                        <ol class="arabic-list">
+                                            <li><strong>الكلمي المثقل:</strong> أن يأتي بعد حرف المد حرف ساكن مُدغم (مثل: ﴿الصَّاخَّةُ﴾)</li>
+                                            <li><strong>الكلمي المخفف:</strong> أن يأتي بعد حرف المد حرف ساكن (مثل: ﴿آلْآنَ﴾)</li>
+                                            <li><strong>الحرفي المثقل:</strong> حرف في فواتح السور هجاؤه ثلاثة أحرف، أوسطها حرف مد، والثالث مدغم (مثل: اللام من ﴿الر﴾)</li>
+                                            <li><strong>الحرفي المخفف:</strong> حرف في فواتح السور هجاؤه ثلاثة أحرف، أوسطها حرف مد، والثالث ساكن (مثل: القاف من ﴿ق﴾)</li>
+                                        </ol>
+                                    </div>
+                                    
+                                    <div class="subtype-card">
+                                        <div class="subtype-name"><i class="fas fa-pause-circle"></i> 9. العارض للسكون</div>
+                                        <p><strong>التعريف:</strong> أن يقع بعد حرف المد واللين سكون عارض للوقف.</p>
+                                        <p><strong>المقدار:</strong> <span class="badge badge-warning">2 أو 4 أو 6 حركات</span></p>
+                                        <div class="quran-example diacritic">مثال: ﴿الْعَالَمِينَ﴾، ﴿الرَّحِيمِ﴾، ﴿الرَّحْمَنِ﴾</div>
+                                        <div class="arabic-note" style="margin-top: 10px; padding: 12px; font-size: 0.95em;">
+                                            <strong>ملاحظة:</strong> في حالة الوصل يسقط سبب المد ويصبح المد طبيعياً (حركتان).
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="subtype-card">
+                                        <div class="subtype-name"><i class="fas fa-water"></i> 10. مد اللين</div>
+                                        <p><strong>التعريف:</strong> أن يأتي واو أو ياء ساكنتين وقبلهما مفتوح.</p>
+                                        <p><strong>المقدار:</strong> <span class="badge badge-warning">2 أو 4 أو 6 حركات</span></p>
+                                        <div class="quran-example diacritic">مثال: ﴿خَوْفٌ﴾، ﴿الْبَيْتِ﴾، ﴿قُرَيْشٍ﴾، ﴿الصَّيْفِ﴾</div>
+                                        <div class="arabic-note" style="margin-top: 10px; padding: 12px; font-size: 0.95em;">
+                                            <strong>شرطه:</strong> في حالة الوقف على الحرف الذي يلي حرف اللين.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الأنواع التسعة -->
+                <div id="madd-types" class="section">
+                    <h2 class="section-title"><i class="fas fa-list-ol"></i> الأنواع التسعة للمد بالتفصيل</h2>
+                    
+                    <!-- المد الطبيعي -->
+                    <div class="madd-detail-card">
+                        <div class="madd-header">
+                            <div class="madd-number">1</div>
+                            <div class="madd-name">المد الطبيعي</div>
+                            <div class="madd-duration"><span class="badge badge-success">حركتان</span></div>
+                        </div>
+                        <div class="arabic-text diacritic">
+                            <p><strong>التعريف:</strong> هو ما لم يأت قبله همز، أو بعده همز أو سكون.</p>
+                            <p><strong>المقدار:</strong> يمد بمقدار حركتين.</p>
+                            <div class="quran-example diacritic">مثال: ﴿قَالَ﴾، ﴿يَقُولُ﴾، ﴿قِيلَ﴾</div>
+                            <div class="arabic-note">
+                                <strong>ملاحظة:</strong> هذا المد هو الأصل في أحكام المد، وهو أساس المدود الأخرى.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- مد البدل -->
+                    <div class="madd-detail-card">
+                        <div class="madd-header">
+                            <div class="madd-number">2</div>
+                            <div class="madd-name">مد البدل</div>
+                            <div class="madd-duration"><span class="badge badge-success">حركتان</span></div>
+                        </div>
+                        <div class="arabic-text diacritic">
+                            <p><strong>التعريف:</strong> هو أن يأتي قبل حرف المد همزة.</p>
+                            <p><strong>سبب التسمية:</strong> لأنه في الأصل عبارة عن همزتين: الأولى متحركة والثانية ساكنة، فأبدلت الثانية مداً.</p>
+                            <p><strong>المقدار:</strong> يمد بمقدار حركتين وصلاً ووقفاً.</p>
+                            <div class="quran-example diacritic">مثال: ﴿آدَمَ﴾، ﴿أُوتُوا﴾، ﴿إِيمَانًا﴾، ﴿إِيمَانُهُمْ﴾</div>
+                        </div>
+                    </div>
+                    
+                    <!-- مد العوض -->
+                    <div class="madd-detail-card">
+                        <div class="madd-header">
+                            <div class="madd-number">3</div>
+                            <div class="madd-name">مد العوض</div>
+                            <div class="madd-duration"><span class="badge badge-success">حركتان</span></div>
+                        </div>
+                        <div class="arabic-text diacritic">
+                            <p><strong>التعريف:</strong> هو مد في حالة الوقف على تنوين النصب فقط.</p>
+                            <p><strong>سبب التسمية:</strong> لأننا عوضنا التنوين بالألف.</p>
+                            <p><strong>المقدار:</strong> يمد بمقدار حركتين فقط، ولا يكون إلا في الوقف.</p>
+                            <div class="quran-example diacritic">مثال: ﴿عَفُوًّا﴾، ﴿رَحِيمًا﴾، ﴿شَكُورًا﴾، ﴿غَفُورًا﴾</div>
+                            <div class="arabic-note">
+                                <strong>تنبيه:</strong> إذا وصلنا مع تنوين النصب لا يوجد مد عوض، بل ينطق بالتنوين الطبيعي.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- مد الصلة -->
+                    <div class="madd-detail-card">
+                        <div class="madd-header">
+                            <div class="madd-number">4</div>
+                            <div class="madd-name">مد الصلة</div>
+                            <div class="madd-duration"><span class="badge badge-success">حركتان</span></div>
+                        </div>
+                        <div class="arabic-text diacritic">
+                            <p><strong>التعريف:</strong> هو مد خاص بصلة هاء الضمير التي للمفرد المذكر الغائب.</p>
+                            
+                            <h4 class="section-subtitle">أقسام مد الصلة:</h4>
+                            
+                            <div class="subtype-grid">
+                                <div class="subtype-card">
+                                    <div class="subtype-name">الصلة الصغرى</div>
+                                    <p><strong>التعريف:</strong> إذا لم يأت بعد الهاء همز.</p>
+                                    <p><strong>المقدار:</strong> حركتان (يلحق بالمد الأصلي).</p>
+                                    <div class="quran-example diacritic">مثال: ﴿كَتَبَهُ وَرَاءَ ظُهُورِهِ﴾، ﴿بِهِ فَهُوَ﴾، ﴿إِلَيْهِ﴾</div>
+                                </div>
+                                
+                                <div class="subtype-card">
+                                    <div class="subtype-name">الصلة الكبرى</div>
+                                    <p><strong>التعريف:</strong> أن يأتي بعد الهاء همز.</p>
+                                    <p><strong>المقدار:</strong> 4 حركات (يلحق بالمد الفرعي).</p>
+                                    <div class="quran-example diacritic">مثال: ﴿مَالَهُ أَخْلَدَهُ﴾، ﴿وَلَا يُشْرِكُ فِي حُكْمِهِ أَحَدًا﴾، ﴿إِلَيْهِ أَمْرُهُ﴾</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- المد الواجب المتصل -->
+                    <div class="madd-detail-card">
+                        <div class="madd-header">
+                            <div class="madd-number">5</div>
+                            <div class="madd-name">المد الواجب المتصل</div>
+                            <div class="madd-duration"><span class="badge badge-danger">4 حركات</span></div>
+                        </div>
+                        <div class="arabic-text diacritic">
+                            <p><strong>التعريف:</strong> هو أن يأتي بعد حرف المد همز متصل به في كلمة واحدة.</p>
+                            <p><strong>المقدار:</strong> أربع حركات أو خمس في الوصل، والمختار أربع. أما إذا وقف عليه فيجوز مده ست حركات لأنه أصبح من باب العارض للسكون في الوقف.</p>
+                            <div class="quran-example diacritic">مثال: ﴿السَّمَاءُ﴾، ﴿جَاءَكُمْ﴾، ﴿سَوَاءٌ﴾، ﴿الضَّلَالَةُ﴾</div>
+                            <div class="arabic-note">
+                                <strong>سبب التسمية:</strong> سمي واجباً لأنه واجب المد بمقدار معين، ومتصلاً لأن الهمز متصل بحرف المد في كلمة واحدة.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- المد الجائز المنفصل -->
+                    <div class="madd-detail-card">
+                        <div class="madd-header">
+                            <div class="madd-number">6</div>
+                            <div class="madd-name">المد الجائز المنفصل</div>
+                            <div class="madd-duration"><span class="badge badge-warning">4 حركات</span></div>
+                        </div>
+                        <div class="arabic-text diacritic">
+                            <p><strong>التعريف:</strong> هو أن يكون حرف المد آخر كلمة والهمز أول كلمة أخرى تليها.</p>
+                            <p><strong>المقدار:</strong> أربع حركات أو خمس، والمختار أربع، ويجوز مده بمقدار حركتين. ويلحق به مد الصلة الكبرى.</p>
+                            <div class="quran-example diacritic">مثال: ﴿وَتُوبُوا إِلَى اللَّهِ﴾، ﴿بِمَا أُوحِيَ﴾، ﴿فِي أَنْفُسِكُمْ﴾، ﴿يَا أَيُّهَا﴾</div>
+                            <div class="arabic-note">
+                                <strong>سبب التسمية:</strong> سمي جائزاً لأن للمقرئ الخيار في مده أو قصره، ومنفصلاً لأن الهمز منفصل بحرف المد في كلمتين.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- المد اللازم -->
+                    <div class="madd-detail-card">
+                        <div class="madd-header">
+                            <div class="madd-number">7</div>
+                            <div class="madd-name">المد اللازم</div>
+                            <div class="madd-duration"><span class="badge badge-primary">6 حركات</span></div>
+                        </div>
+                        <div class="arabic-text diacritic">
+                            <p><strong>التعريف:</strong> هو ما جاء فيه بعد حرف المد سكون لازم في حالتي الوصل والوقف.</p>
+                            <p><strong>المقدار:</strong> يمد لزوماً بمقدار ست حركات لجميع القراء.</p>
+                            <div class="quran-example diacritic">مثال: ﴿الصَّاخَّةُ﴾، ﴿الطَّامَّةُ﴾، ﴿الْحَاقَّةُ﴾، ﴿الْمُرْسَلَاتِ﴾</div>
+                            
+                            <h4 class="section-subtitle">أقسام المد اللازم:</h4>
+                            <ol class="arabic-list">
+                                <li><strong>المد اللازم المثقل الكلمي:</strong> أن يأتي بعد حرف المد حرف ساكن مُدغم (مثل: ﴿الصَّاخَّةُ﴾).</li>
+                                <li><strong>المد اللازم المخفف الكلمي:</strong> أن يأتي بعد حرف المد حرف ساكن (مثل: ﴿آلْآنَ﴾).</li>
+                                <li><strong>المد اللازم المثقل الحرفي:</strong> حرف في فواتح السور هجاؤه ثلاثة أحرف، أوسطها حرف مد، والثالث مدغم (مثل: اللام من ﴿الر﴾).</li>
+                                <li><strong>المد اللازم المخفف الحرفي:</strong> حرف في فواتح السور هجاؤه ثلاثة أحرف، أوسطها حرف مد، والثالث ساكن (مثل: القاف من ﴿ق﴾، والصاد من ﴿ص﴾).</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <!-- العارض للسكون -->
+                    <div class="madd-detail-card">
+                        <div class="madd-header">
+                            <div class="madd-number">8</div>
+                            <div class="madd-name">العارض للسكون</div>
+                            <div class="madd-duration"><span class="badge badge-warning">2/4/6 حركات</span></div>
+                        </div>
+                        <div class="arabic-text diacritic">
+                            <p><strong>التعريف:</strong> هو أن يقع بعد حرف المد واللين سكون عارض للوقف.</p>
+                            <p><strong>المقدار:</strong> ويجوز مده بمقدار حركتين أو أربع أو ست، وذلك في حالة الوقف عليه. أما إذا وصلنا فقد سقط سبب المد وأصبح المد طبيعياً.</p>
+                            <div class="quran-example diacritic">مثال: ﴿الْعَالَمِينَ﴾، ﴿الرَّحِيمِ﴾، ﴿الرَّحْمَنِ﴾، ﴿السَّمَاوَاتِ﴾</div>
+                            <div class="arabic-note">
+                                <strong>تنبيه:</strong> هذا المد خاص بالوقف فقط، فإذا وصل القارئ لا يوجد مد عارض للسكون.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- مد اللين -->
+                    <div class="madd-detail-card">
+                        <div class="madd-header">
+                            <div class="madd-number">9</div>
+                            <div class="madd-name">مد اللين</div>
+                            <div class="madd-duration"><span class="badge badge-warning">2/4/6 حركات</span></div>
+                        </div>
+                        <div class="arabic-text diacritic">
+                            <p><strong>التعريف:</strong> هو أن يأتي واو أو ياء ساكنتين وقبلهما مفتوح.</p>
+                            <p><strong>المقدار:</strong> ويجوز مده حركتين أو أربعاً أو ستاً، وذلك في حالة الوقف على الحرف الذي يلي حرف اللين.</p>
+                            <div class="quran-example diacritic">مثال: ﴿خَوْفٌ﴾، ﴿الْبَيْتِ﴾، ﴿قُرَيْشٍ﴾، ﴿وَالصَّيْفِ﴾، ﴿الْعَيْشِ﴾</div>
+                            <div class="arabic-note">
+                                <strong>شرط مد اللين:</strong> يشترط في مد اللين أن تكون الياء والواو ساكنتين، والحرف الذي بعدهما - مباشرة - موقوفاً عليه بالسكون.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- جدول الملخص -->
+                <div id="summary-table" class="section">
+                    <h2 class="section-title"><i class="fas fa-table"></i> جدول ملخص أحكام المد</h2>
+                    
+                    <div class="card">
+                        <div class="card-content">
+                            <table class="comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>رقم</th>
+                                        <th>نوع المد</th>
+                                        <th>القسم</th>
+                                        <th>السبب</th>
+                                        <th>المقدار</th>
+                                        <th>الحالة</th>
+                                        <th>مثال قرآني</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><strong>الطبيعي</strong></td>
+                                        <td>أصلي</td>
+                                        <td>ذات الحرف</td>
+                                        <td><span class="badge badge-success">حركتان</span></td>
+                                        <td>دائم</td>
+                                        <td class="diacritic">﴿قَالَ﴾</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><strong>البدل</strong></td>
+                                        <td>أصلي</td>
+                                        <td>همز قبل المد</td>
+                                        <td><span class="badge badge-success">حركتان</span></td>
+                                        <td>دائم</td>
+                                        <td class="diacritic">﴿آدَمَ﴾</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><strong>العوض</strong></td>
+                                        <td>أصلي</td>
+                                        <td>تنوين النصب</td>
+                                        <td><span class="badge badge-success">حركتان</span></td>
+                                        <td>وقفاً فقط</td>
+                                        <td class="diacritic">﴿رَحِيمًا﴾</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td><strong>الصلة الصغرى</strong></td>
+                                        <td>أصلي</td>
+                                        <td>هاء الضمير</td>
+                                        <td><span class="badge badge-success">حركتان</span></td>
+                                        <td>دائم</td>
+                                        <td class="diacritic">﴿بِهِ﴾</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td><strong>الواجب المتصل</strong></td>
+                                        <td>فرعي</td>
+                                        <td>همز متصل</td>
+                                        <td><span class="badge badge-danger">4 حركات</span></td>
+                                        <td>دائم (وقف: 6)</td>
+                                        <td class="diacritic">﴿جَاءَ﴾</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td><strong>الجائز المنفصل</strong></td>
+                                        <td>فرعي</td>
+                                        <td>همز منفصل</td>
+                                        <td><span class="badge badge-warning">4 حركات</span></td>
+                                        <td>دائم (يجوز 2)</td>
+                                        <td class="diacritic">﴿إِلَى اللَّهِ﴾</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td><strong>الصلة الكبرى</strong></td>
+                                        <td>فرعي</td>
+                                        <td>همز بعد هاء</td>
+                                        <td><span class="badge badge-info">4 حركات</span></td>
+                                        <td>دائم</td>
+                                        <td class="diacritic">﴿مَالَهُ أَخْلَدَهُ﴾</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td><strong>اللازم</strong></td>
+                                        <td>فرعي</td>
+                                        <td>سكون لازم</td>
+                                        <td><span class="badge badge-primary">6 حركات</span></td>
+                                        <td>دائم</td>
+                                        <td class="diacritic">﴿الْحَاقَّةُ﴾</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td><strong>العارض للسكون</strong></td>
+                                        <td>فرعي</td>
+                                        <td>سكون عارض</td>
+                                        <td><span class="badge badge-warning">2/4/6</span></td>
+                                        <td>وقفاً فقط</td>
+                                        <td class="diacritic">﴿الرَّحِيمِ﴾</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td><strong>اللين</strong></td>
+                                        <td>فرعي</td>
+                                        <td>واو/ياء ساكنتين</td>
+                                        <td><span class="badge badge-warning">2/4/6</span></td>
+                                        <td>وقفاً فقط</td>
+                                        <td class="diacritic">﴿خَوْفٌ﴾</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="arabic-note">
+                        <strong>ملاحظات هامة:</strong>
+                        <ol class="arabic-list">
+                            <li>الحركة هي المدة الزمنية اللازمة لفتح الإصبع أو قبضه مرة واحدة.</li>
+                            <li>المد الأصلي ثابت في جميع الأحوال (حركتان).</li>
+                            <li>المد الفرعي يتغير مقداره حسب النوع والقراءة.</li>
+                            <li>في حالة الوقف على الكلمة، تتحول بعض أنواع المد إلى العارض للسكون.</li>
+                            <li>يجب مراعاة أحكام المد أثناء التلاوة لضمان صحة النطق والأداء.</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="tajwid-rule">
+                        <div class="tajwid-rule-title"><i class="fas fa-graduation-cap"></i> خاتمة وتوصيات</div>
+                        <p class="arabic-text">لإتقان أحكام المد، ننصح بما يلي:</p>
+                        <ol class="arabic-list">
+                            <li>الاستماع إلى القراء المتقنين وإعادة تلاوتهم.</li>
+                            <li>التدرب على قياس الحركات عملياً باستخدام الأصابع.</li>
+                            <li>مراجعة الجدول الملخص قبل كل جلسة تلاوة.</li>
+                            <li>التطبيق العملي على الآيات القرآنية المذكورة في الأمثلة.</li>
+                            <li>الاستعانة بمشايخ التجويد للتصحيح والتحسين.</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="footer">
+                    <p>© 2025 - دليل أحكام المد في تجويد القرآن الكريم</p>
+                    <p style="margin-top: 10px; opacity: 0.9;">تم إعداد هذا الدليل لخدمة كتاب الله تعالى وتعليم أحكام تلاوته</p>
+                    <p style="margin-top: 10px; font-size: 0.95em;">المراجع: كتاب التمهيد في علم التجويد - تحفة الأطفال - الجزرية - والمصادر المعتمدة في علم التجويد</p>
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
+                        <p style="font-size: 0.9em; opacity: 0.8;">تم تطوير الواجهة لدعم النص القرآني بالتشكيل الكامل وأحكام التجويد</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // وظيفة التبديل بين التبويبات
+        function showTab(tabId) {
+            // إخفاء جميع المحتويات
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // إزالة النشاط من جميع الأزرار
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // إظهار المحتوى المطلوب
+            document.getElementById(tabId).classList.add('active');
+            
+            // إضافة النشاط للزر المطلوب
+            event.currentTarget.classList.add('active');
+        }
+        
+        // وظيفة التمرير إلى القسم
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // تحديث الروابط النشطة في الشريط الجانبي
+                const navLinks = document.querySelectorAll('.sidebar-nav a');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        }
+        
+        // وظيفة التمرير إلى الأعلى
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // عرض/إخفاء زر العودة للأعلى
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+            
+            // تحديث الروابط النشطة في الشريط الجانبي حسب الموقع
+            updateActiveNavLink();
+        });
+        
+        // تحديث الرابط النشط في الشريط الجانبي
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+            
+            let currentSectionId = '';
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSectionId = section.id;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // تفعيل التمرير السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+        
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // تفعيل أول تبويب
+            showTab('due-to-hamz');
+            
+            // تحديث الروابط النشطة عند التحميل
+            updateActiveNavLink();
+            
+            // إضافة تأثيرات للبطاقات عند التمرير
+            const cards = document.querySelectorAll('.card, .madd-detail-card, .letter-card, .classification-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.6s ease-in';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => observer.observe(card));
+            
+            // تحسين عرض النص القرآني
+            const quranTexts = document.querySelectorAll('.quran-example, .quran-text, .letter-example');
+            quranTexts.forEach(text => {
+                text.style.fontFeatureSettings = '"kern" 1, "liga" 1, "calt" 1';
+                text.style.textRendering = 'optimizeLegibility';
+            });
+        });
+        
+        // تحسين الطباعة
+        function optimizePrint() {
+            // إضافة صناديق ملاحظات خاصة بالطباعة
+            const printNote = document.createElement('div');
+            printNote.className = 'print-note';
+            printNote.innerHTML = '<p style="text-align: center; font-style: italic; margin: 20px 0; color: #666;">تم طباعة هذا الدليل التعليمي لأحكام المد في القرآن الكريم</p>';
+            document.querySelector('.main-content').insertBefore(printNote, document.querySelector('.footer'));
+        }
+        
+        // استدعاء تحسين الطباعة قبل الطباعة
+        window.onbeforeprint = optimizePrint;
+    </script>
+    
+    <!-- إضافة خطوط عربية محسنة للنص القرآني -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- خط Amiri مثالي للنص القرآني -->
+</body>
+</html>
